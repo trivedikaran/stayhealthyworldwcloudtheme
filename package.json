@@ -120,7 +120,6 @@
     "typescript": "2.3.2",
     "typogr": "0.6.6",
     "underscore": "1.8.3",
-    "webpack": "^3.5.6",
     "wintersmith": "^2.4.1",
     "wintersmith-sassy": "1.1.0"
   }

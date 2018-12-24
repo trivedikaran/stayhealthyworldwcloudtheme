@@ -7,6 +7,10 @@ import { ModuleWithProviders } from '@angular/core';
 
 export const routes: Routes = [
   {
+    path: '',
+    loadChildren: 'app/pages/login/login.module#LoginModule'
+  },
+  {
     path: 'login',
     loadChildren: 'app/pages/login/login.module#LoginModule'
   },
