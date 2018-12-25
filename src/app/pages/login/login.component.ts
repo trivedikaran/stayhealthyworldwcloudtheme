@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'app/services/login.service';
 import { error } from 'util';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'login',
@@ -15,6 +16,7 @@ export class Login implements OnInit {
   password: AbstractControl;
   submitted: boolean = false;
   userList: any;
+  userObject: any = {};
 
   constructor(fb: FormBuilder, private loginService: LoginService) {
     this.form = fb.group({
@@ -26,14 +28,15 @@ export class Login implements OnInit {
     this.password = this.form.controls['password'];
   }
 
-  onSubmit(userObject) {
-    this.submitted = true;
-    if (this.form.valid) {
-      this.loginService.CheckUserLogin(userObject).subscribe(
+  onSubmit(loginForm) {
+
+    if (loginForm.valid) {
+      debugger
+      this.loginService.CheckUserLogin(this.userObject).subscribe(
         (data: any) => {
-          debugger
+          console.log(data);
         }, error => {
-          
+          console.log(error);
         });
     }
   }

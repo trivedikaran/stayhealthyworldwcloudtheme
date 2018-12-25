@@ -14,12 +14,13 @@ export class LoginService {
   }
 
   GetUser(userId) {
-    const currentUrl = url + 'GetUserList?UserId=10';
-    return this.http.get(currentUrl).map((res: Response) => res.json());
+    const getUserUrl = url + 'GetUserList?UserId=' + userId;
+    return this.http.get(getUserUrl).map((res: Response) => res.json());
   }
 
   CheckUserLogin(userObject) {
-    debugger
+    const checkUserLoginUrl = url + 'CheckUserLogin';
+    return this.http.post(checkUserLoginUrl, userObject);
   }
 
 }
