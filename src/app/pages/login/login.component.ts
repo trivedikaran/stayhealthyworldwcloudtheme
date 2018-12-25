@@ -1,19 +1,22 @@
-import {Component} from '@angular/core';
-import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from 'app/services/login.service';
+import { error } from 'util';
 
 @Component({
   selector: 'login',
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
 })
-export class Login {
+export class Login implements OnInit {
 
-  public form:FormGroup;
-  public email:AbstractControl;
-  public password:AbstractControl;
-  public submitted:boolean = false;
+  form: FormGroup;
+  email: AbstractControl;
+  password: AbstractControl;
+  submitted: boolean = false;
+  userList: any;
 
-  constructor(fb:FormBuilder) {
+  constructor(fb: FormBuilder, private loginService: LoginService) {
     this.form = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -23,11 +26,24 @@ export class Login {
     this.password = this.form.controls['password'];
   }
 
-  public onSubmit(values:Object):void {
+  onSubmit(userObject) {
     this.submitted = true;
     if (this.form.valid) {
-      // your code goes here
-      // console.log(values);
+      this.loginService.CheckUserLogin(userObject).subscribe(
+        (data: any) => {
+          debugger
+        }, error => {
+          
+        });
     }
   }
+
+  ngOnInit() {
+    // this.loginService.GetUser(0).subscribe(
+    //   (data: any) => {
+    //     this.userList = data;
+    //   }, error => {
+    //   });
+  }
+
 }
