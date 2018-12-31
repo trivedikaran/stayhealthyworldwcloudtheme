@@ -8,6 +8,7 @@ var passwordHash = require('password-hash');
 
 router.get('/GetUserList', async (req, res) => {
   try {
+
     const pool = await poolPromise;
     const result = await pool.request()
       .input('UserId', sql.Int, req.query.UserId)
@@ -26,11 +27,11 @@ router.post('/CheckUserLogin', async (req, res) => {
     const pool = await poolPromise;
     const request = await pool.request();
 
-    request.input('Email', sql.VarChar, 'trivedikaran13@gmail.com');
-    request.input('Password', sql.NVarChar, passwordHash.generate('karan1234'));
+    request.input('Email', sql.VarChar, req.body.email);
+    request.input('Password', sql.NVarChar, encrypt(req.body.password));
 
     const result = request.execute('CheckUserLogin', (err, result) => {
-      res.json(result.recordset);
+      res.json(result);
     });
   } catch (err) {
     res.status(500)

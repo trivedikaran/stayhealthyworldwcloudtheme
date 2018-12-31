@@ -1,6 +1,7 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
+import { Login } from './login';
 // noinspection TypeScriptValidateTypes
 
 // export function loadChildren(path) { return System.import(path); };
@@ -8,15 +9,11 @@ import { ModuleWithProviders } from '@angular/core';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: 'app/pages/login/login.module#LoginModule'
-  },
-  {
-    path: 'login',
-    loadChildren: 'app/pages/login/login.module#LoginModule'
+    redirectTo: 'login', pathMatch: 'full',
   },
   {
     path: 'register',
-    loadChildren: 'app/pages/register/register.module#RegisterModule'
+    loadChildren: 'app/pages/register/register.module#RegisterModule',
   },
   {
     path: 'pages',

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'app/services/login.service';
-import { error } from 'util';
+import { error, isNullOrUndefined } from 'util';
 import { Observable } from 'rxjs';
+import { areIterablesEqual } from '@angular/core/src/change_detection/change_detection_util';
+import { Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+
 
 @Component({
   selector: 'login',
@@ -15,10 +19,10 @@ export class Login implements OnInit {
   email: AbstractControl;
   password: AbstractControl;
   submitted: boolean = false;
-  userList: any;
+  // userList: any;
   userObject: any = {};
 
-  constructor(fb: FormBuilder, private loginService: LoginService) {
+  constructor(fb: FormBuilder, private loginService: LoginService, private router: Router) {
     this.form = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -31,10 +35,15 @@ export class Login implements OnInit {
   onSubmit(loginForm) {
 
     if (loginForm.valid) {
-      debugger
       this.loginService.CheckUserLogin(this.userObject).subscribe(
         (data: any) => {
-          console.log(data);
+          const userDetail = data.recordsets[0];
+          if (!isNullOrUndefined(userDetail) && userDetail.length > 0) {
+            this.router.navigate(['/pages/dashboard']);
+          } else {
+            alert('Invalid user login...');
+          }
+
         }, error => {
           console.log(error);
         });
@@ -42,11 +51,5 @@ export class Login implements OnInit {
   }
 
   ngOnInit() {
-    // this.loginService.GetUser(0).subscribe(
-    //   (data: any) => {
-    //     this.userList = data;
-    //   }, error => {
-    //   });
   }
-
 }

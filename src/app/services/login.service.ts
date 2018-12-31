@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, ResponseContentType } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { RequestOptions, Response } from '@angular/http';
+import { RequestOptions, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 import { parse } from 'url';
 
 const url = 'http://localhost:8080/Login/';
 
+
 @Injectable()
 export class LoginService {
-  constructor(private http: Http) {
 
+  headers: Headers;
+  options: RequestOptions;
+
+  constructor(private http: Http) {
   }
 
   GetUser(userId) {
@@ -19,8 +23,8 @@ export class LoginService {
   }
 
   CheckUserLogin(userObject) {
-    const checkUserLoginUrl = url + 'CheckUserLogin';
-    return this.http.post(checkUserLoginUrl, userObject);
+    const checkUserLoginUrl = url + 'CheckUserLogin?userId=10';
+    return this.http.post(checkUserLoginUrl, userObject).map((res: Response) => res.json());
   }
 
 }
