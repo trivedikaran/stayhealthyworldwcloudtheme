@@ -39,7 +39,7 @@ export class Login implements OnInit {
         (data: any) => {
           const userDetail = data.recordsets[0];
           if (!isNullOrUndefined(userDetail) && userDetail.length > 0) {
-            this.router.navigate(['/pages/dashboard']);
+            this.router.navigate(['/pages/fitnesswall']);
           } else {
             alert('Invalid user login...');
           }

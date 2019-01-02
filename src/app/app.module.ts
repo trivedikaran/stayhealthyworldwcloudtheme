@@ -18,6 +18,9 @@ import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 import { LoginService } from './services/login.service';
 import { LoginModule } from './pages/login/login.module';
+import { DietchartsModule } from './pages/dietcharts/dietcharts.module';
+import { ArticlesModule } from './pages/articles/articles.module';
+import { MyarticlesModule } from './pages/myarticles/myarticles.module';
 
 
 // Application wide providers
@@ -51,6 +54,9 @@ export type StoreType = {
     PagesModule,
     routing,
     LoginModule,
+    DietchartsModule,
+    ArticlesModule,
+    MyarticlesModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
