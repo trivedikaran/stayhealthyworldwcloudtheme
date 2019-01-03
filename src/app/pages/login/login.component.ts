@@ -33,7 +33,6 @@ export class Login implements OnInit {
   }
 
   onSubmit(loginForm) {
-
     if (loginForm.valid) {
       this.loginService.CheckUserLogin(this.userObject).subscribe(
         (data: any) => {
@@ -43,7 +42,6 @@ export class Login implements OnInit {
           } else {
             alert('Invalid user login...');
           }
-
         }, error => {
           console.log(error);
         });

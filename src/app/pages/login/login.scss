@@ -1,1 +1,33 @@
 @import '../../theme/sass/auth';
+
+.header {
+  background-color: #3498DB;
+}
+
+.body {
+  background-color: #AED6F1;
+}
+
+.body h1,
+h2,
+input,
+p {
+  color: black !important;
+}
+
+.createaccountlabel {
+  font-size: 40px;
+}
+
+.form-control {
+  color: black;
+}
+
+.purposeLabel {
+  font-size: 50px;
+  color: black;
+}
+
+// .headerRow {
+//   height: 50px;
+// }

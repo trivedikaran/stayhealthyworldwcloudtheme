@@ -21,6 +21,7 @@ import { LoginModule } from './pages/login/login.module';
 import { DietchartsModule } from './pages/dietcharts/dietcharts.module';
 import { ArticlesModule } from './pages/articles/articles.module';
 import { MyarticlesModule } from './pages/myarticles/myarticles.module';
+import { UiModule } from './pages/ui/ui.module';
 
 
 // Application wide providers

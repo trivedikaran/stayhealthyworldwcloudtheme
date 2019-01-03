@@ -23,7 +23,7 @@ export class LoginService {
   }
 
   CheckUserLogin(userObject) {
-    const checkUserLoginUrl = url + 'CheckUserLogin?userId=10';
+    const checkUserLoginUrl = url + 'CheckUserLogin';
     return this.http.post(checkUserLoginUrl, userObject).map((res: Response) => res.json());
   }
 

@@ -22,6 +22,8 @@ import { PieChartService } from './pieChart/pieChart.service';
 import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
+import { UiModule } from '../ui/ui.module';
+import { FlatButtons } from '../ui/components/buttons/components/flatButtons';
 
 @NgModule({
   imports: [
@@ -29,7 +31,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     FormsModule,
     AppTranslationModule,
     NgaModule,
-    routing
+    routing,
   ],
   declarations: [
     PopularApp,
@@ -40,7 +42,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     Feed,
     Todo,
     Calendar,
-    Dashboard
+    Dashboard,
   ],
   providers: [
     CalendarService,

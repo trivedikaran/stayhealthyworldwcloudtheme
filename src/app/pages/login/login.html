@@ -1,46 +1,112 @@
-<div class="auth-main">
-  <div class="auth-block">
-    <h1 translate>{{'login.title'}}</h1>
-    <a routerLink="/register" class="auth-link" translate>{{'login.signup_link'}}</a>
-
-    <form [formGroup]="form" #LoginForm="ngForm" (ngSubmit)="LoginForm.form.valid && onSubmit(LoginForm)" class="form-horizontal">
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 control-label" translate>{{'login.email'}}</label>
-
-        <div class="col-sm-10">
-          <input [formControl]="email" type="email" class="form-control" id="inputEmail3" [(ngModel)]="userObject.email"
-            placeholder="{{'login.email' | translate}}">
-          <div *ngIf="!email.valid && LoginForm.submitted" class="validation-input">
-            Email is required!
-          </div>
+<div class="header">
+  <br>
+  <div class="row headerRow">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-4">
+      <h1>stayhealthyworld</h1>
+    </div>
+    <div class="col-sm-4">
+      <form [formGroup]="form" #LoginForm="ngForm" (ngSubmit)="LoginForm.form.valid && onSubmit(LoginForm)" class="row form-inline">
+        <div class="form-group col-sm-5">
+          <input type="email" class="form-control" [formControl]="email" id="email" placeholder="Email" [(ngModel)]="userObject.email"
+            [ngClass]="{'has-error': (!email.valid && LoginForm.submitted), 'has-success': (email.valid && LoginForm.submitted)}">
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 control-label" translate>{{'login.password'}}</label>
-
-        <div class="col-sm-10">
-          <input [formControl]="password" type="password" [(ngModel)]="userObject.password" class="form-control" id="inputPassword3"
-            placeholder="{{'login.password' | translate}}">
-          <div *ngIf="!password.valid && LoginForm.submitted" class="validation-input">
-            Password is required!
-          </div>
+        <div class="form-group col-sm-5">
+          <input [formControl]="password" type="password" class="form-control" id="password" placeholder="Password"
+            [(ngModel)]="userObject.password" [ngClass]="{'has-error': (!password.valid && LoginForm.submitted), 'has-success': (password.valid && LoginForm.submitted)}">
         </div>
-      </div>
-      <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-          <button type="submit" class="btn btn-default btn-auth" translate>{{'login.sign_in'}}</button>
-          <a routerLink="/login" class="forgot-pass" translate>{{'login.forgot_password'}}</a>
+        <div class="form-group col-sm-2">
+          <button type="submit" class="btn btn-primary">Login</button>
         </div>
-      </div>
-    </form>
-    <div class="auth-sep"><span><span translate>{{'login.sign_from_app_text'}}</span></span></div>
-
-    <div class="al-share-auth">
-      <ul class="al-share clearfix">
-        <li><i class="socicon socicon-facebook" title="{{'login.share_on_facebook' | translate}}"></i></li>
-        <li><i class="socicon socicon-twitter" title="{{'login.share_on_twitter' | translate}}"></i></li>
-        <li><i class="socicon socicon-google" title="{{'login.share_on_google_plus' | translate}}"></i></li>
-      </ul>
+      </form>
+      <br>
     </div>
   </div>
+</div>
+<div class="body">
+  <br>
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-4">
+      <br>
+      <div class="purposeLabel text-center">Making A World <br><br><br>Healthy and Happy</div>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-5">
+      <div class="row" style="margin-top: 3%">
+        <br>
+        <form [formGroup]="form" #RegistrationForm="ngForm" (ngSubmit)="RegistrationForm.form.valid && onRegistration(RegistrationForm)">
+          <div class="row">
+            <p class="createaccountlabel">
+              Create an account
+            </p>
+          </div>
+          <br>
+          <div class="row form-group">
+            <input type="text" class="form-control" placeholder="Firstname">
+          </div>
+          <div class="row form-group">
+            <input type="text" class="form-control" placeholder="Lastname">
+          </div>
+          <div class="row form-group">
+            <input type="email" class="form-control" placeholder="Email Address">
+          </div>
+          <div class="row form-group">
+            <input type="password" class="form-control" placeholder="Password">
+          </div>
+          <div class="row form-group">
+            <select class="form-control col-sm-3" id="date" placeholder="Day">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <div class="col-sm-1"></div>
+            <select class="form-control col-sm-3" id="date" placeholder="Month">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select class="form-control col-sm-4" id="date" placeholder="Year">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="input-demo radio-demo row">
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Female">
+                  <span>Female</span>
+                </label>
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Male">
+                  <span>Male</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <button type="submit" class="btn btn-primary btn-xm">SIGN UP</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
 </div>
