@@ -27,4 +27,24 @@ export class LoginService {
     return this.http.post(checkUserLoginUrl, userObject).map((res: Response) => res.json());
   }
 
+  GetDayList() {
+    const getDayUrl = url + 'GetDayList';
+    return this.http.get(getDayUrl).map((res: Response) => res.json());
+  }
+
+  GetMonthList() {
+    const getMonthUrl = url + 'GetMonthList';
+    return this.http.get(getMonthUrl).map((res: Response) => res.json());
+  }
+
+  GetYearList() {
+    const getYearUrl = url + 'GetYearList';
+    return this.http.get(getYearUrl).map((res: Response) => res.json());
+  }
+
+  RegisterUser(registerUserObject) {
+    const registerUserUrl = url + 'RegisterUser';
+    return this.http.post(registerUserUrl, registerUserObject).map((res: Response) => res.json());
+  }
+
 }

@@ -46,40 +46,38 @@
           </div>
           <br>
           <div class="row form-group">
-            <input type="text" class="form-control" placeholder="Firstname">
+            <input type="text" class="form-control" placeholder="Firstname" [(ngModel)]="registrationObject.Firstname">
           </div>
           <div class="row form-group">
-            <input type="text" class="form-control" placeholder="Lastname">
+            <input type="text" class="form-control" placeholder="Lastname" [(ngModel)]="registrationObject.Lastname">
           </div>
           <div class="row form-group">
-            <input type="email" class="form-control" placeholder="Email Address">
+            <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]="registrationObject.EmailAddress">
           </div>
           <div class="row form-group">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="registrationObject.Password">
           </div>
           <div class="row form-group">
-            <select class="form-control col-sm-3" id="date" placeholder="Day">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+
+            <select class="form-control col-sm-3" id="day" placeholder="Day" [(ngModel)]="registrationObject.SelectedDay">
+              <option value=""></option>
+              <option *ngFor="let day of days" value={{day.Day}}>
+                {{day.Day}}
+              </option>
             </select>
             <div class="col-sm-1"></div>
-            <select class="form-control col-sm-3" id="date" placeholder="Month">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select class="form-control col-sm-3" id="month" placeholder="Month" [(ngModel)]="registrationObject.SelectedMonth">
+              <option value=""></option>
+              <option *ngFor="let month of months" value={{month.MonthValue}}>
+                {{month.MonthText}}
+              </option>
             </select>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <select class="form-control col-sm-4" id="date" placeholder="Year">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select class="form-control col-sm-4" id="year" placeholder="Year" [(ngModel)]="registrationObject.SelectedYear">
+              <option value=""></option>
+              <option *ngFor="let year of years" value={{year.Year}}>
+                {{year.Year}}
+              </option>
             </select>
           </div>
           <div class="row">

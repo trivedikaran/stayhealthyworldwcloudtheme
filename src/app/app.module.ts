@@ -22,6 +22,7 @@ import { DietchartsModule } from './pages/dietcharts/dietcharts.module';
 import { ArticlesModule } from './pages/articles/articles.module';
 import { MyarticlesModule } from './pages/myarticles/myarticles.module';
 import { UiModule } from './pages/ui/ui.module';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 
 // Application wide providers
@@ -29,6 +30,47 @@ const APP_PROVIDERS = [
   AppState,
   GlobalState
 ];
+
+const notifierDefaultOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'left',
+      distance: 12,
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10,
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: false,
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4,
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease',
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50,
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease',
+    },
+    overlap: 150,
+  }
+};
 
 export type StoreType = {
   state: InternalStateType,
@@ -58,6 +100,7 @@ export type StoreType = {
     DietchartsModule,
     ArticlesModule,
     MyarticlesModule,
+    NotifierModule.withConfig(notifierDefaultOptions),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,

@@ -21,10 +21,20 @@ p {
 
 .form-control {
   color: black;
+  // border: 1px solid black !important;
 }
 
 .purposeLabel {
   font-size: 50px;
+  color: black;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+}
+
+.label.custom-radio>span {
   color: black;
 }
 
